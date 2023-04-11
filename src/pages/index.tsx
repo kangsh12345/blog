@@ -1,5 +1,5 @@
-// import { GetServerSideProps } from 'next';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import Layout, { siteTitle } from '~/components/Layout';
@@ -7,11 +7,12 @@ import { PostData } from '~/lib/posts';
 
 import utilStyles from '../styles/utils.module.css';
 
-// interface Props {
-//   allPostsData: PostData[];
-// }
+interface Props {
+  allPostsData: PostData[];
+}
 
-// export const getStaticProps: GetServerSideProps<Props> = async () => {
+// 서버사이드 렌더링
+// export const getServerSideProps: GetServerSideProps<Props> = async () => {
 //   const allPostsData = getSortedPostsData();
 
 //   return {
@@ -21,16 +22,28 @@ import utilStyles from '../styles/utils.module.css';
 //   };
 // };
 
-export default function Home() {
-  const [allPostsData, setAllPostsData] = useState<PostData[]>([]);
-  useEffect(() => {
-    fetch('/api/posts')
-      .then(res => res.json())
-      .then(data => {
-        setAllPostsData(data.allPostsData);
-        console.log(data);
-      });
-  }, []);
+// 서버 스태틱 렌더링
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const res = await fetch('http://localhost:3000/api/posts');
+  const json = await res.json();
+
+  return {
+    props: {
+      allPostsData: json.allPostsData,
+    },
+  };
+};
+
+export default function Home({ allPostsData }: Props) {
+  // 클라이언트 사이드 렌더링
+  // const [allPostsData, setAllPostsData] = useState<PostData[]>([]);
+  // useEffect(() => {
+  //   fetch('/api/posts')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setAllPostsData(data.allPostsData);
+  //     });
+  // }, []);
 
   return (
     <>
