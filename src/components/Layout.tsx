@@ -6,7 +6,7 @@ import Link from 'next/link';
 import utilStyles from '../styles/utils.module.css';
 import styles from './layout.module.css';
 
-const name = 'Your Name';
+const name = 'KANG SEUNGHEON';
 export const siteTitle = 'Next.js Sample Website';
 
 export default function Layout({
