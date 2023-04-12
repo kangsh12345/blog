@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 
 import { Date } from '~/components/Date';
 import { getAllPostIds, getPostData, PostData } from '~/lib/posts';
@@ -13,12 +14,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const postData = await getPostData(params?.id as string);
+
   return {
     props: {
       postData,
@@ -27,6 +29,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export default function Post({ postData }: Props) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <article>
