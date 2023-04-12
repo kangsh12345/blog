@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 
-import Layout from '~/components/Layout';
+import { Layout } from '~/components/Layout';
 
 import '~/styles/global.css';
 

@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 
+import { Date } from '~/components/Date';
 import { getAllPostIds, getPostData, PostData } from '~/lib/posts';
+import utilStyles from '~/styles/utils.module.css';
 
 export interface Props {
   postData: PostData;
@@ -28,11 +29,14 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 export default function Post({ postData }: Props) {
   return (
     <>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <h1>{postData.title}</h1>
-      <p>{postData.date}</p>
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <br />
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
     </>
   );
 }
