@@ -99,7 +99,7 @@ export async function createPost({ id, contentHtml, title, date }: PostData) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
 
   const data = `---
-title: ${title}
+title: '${title}'
 date: '${date}'
 ---
 
