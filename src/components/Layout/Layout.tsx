@@ -45,7 +45,7 @@ export function Layout({
   };
 
   return (
-    <div className="bg-purple-50 dark:bg-black text-gray-800 dark:text-gray-200 h-screen">
+    <div className="bg-purple-50 dark:bg-black text-gray-800 dark:text-gray-200 min-h-screen max-h-max">
       <div className={styles.container}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
