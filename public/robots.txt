@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://devote-phi.vercel.app/
+
+# Sitemaps
+Sitemap: https://devote-phi.vercel.app/sitemap.xml
