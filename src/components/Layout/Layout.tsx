@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import utilStyles from '~/styles/utils.module.css';
 
+import { Utterances } from '../Utterances';
 import styles from './layout.module.css';
 
 const name = 'KANG SEUNGHEON';
@@ -114,9 +115,12 @@ export function Layout({
         </header>
         <main>{children}</main>
         {!home && (
-          <div className={styles.backToHome}>
-            <Link href="/">← Back to home</Link>
-          </div>
+          <>
+            <Utterances />
+            <div className={styles.backToHome}>
+              <Link href="/">← Back to home</Link>
+            </div>
+          </>
         )}
       </div>
     </div>
