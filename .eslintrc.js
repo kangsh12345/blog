@@ -4,6 +4,7 @@ module.exports = {
     'prettier',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'plugin:@next/next/recommended',
   ],
   plugins: [
     'react',
@@ -12,6 +13,7 @@ module.exports = {
     'prettier',
     'import',
     'simple-import-sort',
+    'tailwindcss',
   ],
   settings: {
     'import/parsers': {
