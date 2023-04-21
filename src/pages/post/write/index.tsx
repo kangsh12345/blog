@@ -1,5 +1,10 @@
 import { FormEvent, useRef, useState } from 'react';
+// import { GetServerSideProps } from 'next';
 import Link from 'next/link';
+
+// export const getServerSideProps: GetServerSideProps<{}> = async () => {
+//   return { props: {} };
+// };
 
 export default function Index() {
   const idRef = useRef<HTMLInputElement>(null);
@@ -74,3 +79,8 @@ export default function Index() {
     </>
   );
 }
+
+// getStaticProps, getServerSideProps나오기 전에 쓰면 형식이라 잘안씀
+// Index.getInitialProps = async () => {
+//   return {};
+// };

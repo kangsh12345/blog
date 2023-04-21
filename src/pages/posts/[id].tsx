@@ -1,12 +1,20 @@
-import { PropsWithChildren } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+// import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { MDXRemote } from 'next-mdx-remote';
 
+import { Button } from '~/components/Button';
 import { CodeBlock } from '~/components/CodeBlock';
 import { Date } from '~/components/Date';
 import { getAllPostIds, getPostData, PostData } from '~/lib/posts';
 import utilStyles from '~/styles/utils.module.css';
+
+// const Button = dynamic(
+//   () => import('~/components/Button').then(mod => mod.Button),
+//   {
+//     loading: () => <div>Loadding...</div>,
+//   },
+// );
 
 export interface Props {
   postData: PostData;
@@ -34,17 +42,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({
       postData,
     },
   };
-};
-
-const Button = ({ children }: PropsWithChildren<{}>) => {
-  return (
-    <button
-      className="bg-black dark:bg-white text-lg dark:text-teal-700 text-teal-200 rounded-lg px-5"
-      onClick={() => alert(`thanks to ${children}`)}
-    >
-      {children}
-    </button>
-  );
 };
 
 const components = { Button, CodeBlock };
