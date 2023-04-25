@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { Date } from '~/components/Date';
-import { Layout, siteTitle } from '~/components/Layout';
+import { siteTitle } from '~/components/Layout';
 import { getSortedPostsData, PostData } from '~/lib/posts';
 
 import utilStyles from '../styles/utils.module.css';
@@ -76,6 +76,6 @@ export default function Home({ allPostsData }: Props) {
   );
 }
 
-Home.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout home>{page}</Layout>;
-};
+// Home.getLayout = function getLayout(page: React.ReactElement) {
+//   return <Layout home>{page}</Layout>;
+// };
