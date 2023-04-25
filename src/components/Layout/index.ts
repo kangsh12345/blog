@@ -1,2 +1,2 @@
+export { ErrorLayout } from './ErrorLayout';
 export { Layout } from './Layout';
-export { siteTitle } from './Layout';

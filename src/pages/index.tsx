@@ -75,7 +75,3 @@ export default function Home({ allPostsData }: Props) {
     </>
   );
 }
-
-// Home.getLayout = function getLayout(page: React.ReactElement) {
-//   return <Layout home>{page}</Layout>;
-// };
