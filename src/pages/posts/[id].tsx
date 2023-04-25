@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 // import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { MDXRemote } from 'next-mdx-remote';
@@ -8,6 +9,8 @@ import { CodeBlock } from '~/components/CodeBlock';
 import { Date } from '~/components/Date';
 import { getAllPostIds, getPostData, PostData } from '~/lib/posts';
 import utilStyles from '~/styles/utils.module.css';
+
+import { siteTitle } from '../_document';
 
 // const Button = dynamic(
 //   () => import('~/components/Button').then(mod => mod.Button),
@@ -55,6 +58,9 @@ export default function Post({ postData }: Props) {
 
   return (
     <>
+      <Head>
+        <title>{`${postData.title} - ${siteTitle}`}</title>
+      </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>

@@ -1,4 +1,5 @@
 import { FormEvent, useRef, useState } from 'react';
+import Head from 'next/head';
 // import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
@@ -52,9 +53,13 @@ export default function Index() {
 
   return (
     <>
+      <Head>
+        <title>Write a post</title>
+      </Head>
       <h1>Write a post</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" name="id" placeholder="id" required ref={idRef} />
+        <br />
         <br />
         <input
           type="text"
@@ -64,6 +69,7 @@ export default function Index() {
           ref={titleRef}
         />
         <br />
+        <br />
         <textarea
           name="content"
           placeholder="content"
@@ -71,7 +77,11 @@ export default function Index() {
           ref={contentRef}
         />
         <br />
-        <input type="submit" value="Create" />
+        <input
+          className="rounded bg-purple-500 px-2"
+          type="submit"
+          value="Create"
+        />
       </form>
       {showLink && (
         <Link href={`/posts/${idRef.current?.value}`}>Created Post</Link>

@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { Date } from '~/components/Date';
-import { siteTitle } from '~/components/Layout';
 import { getSortedPostsData, PostData } from '~/lib/posts';
+import { siteTitle } from '~/pages/_document';
 
 import utilStyles from '../styles/utils.module.css';
 
