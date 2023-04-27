@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { formatDistanceToNow } from 'date-fns';
 
+import { ErrorBoundary } from '~/components/ErrorBoundary/ErrorBoundary';
 import { Layout } from '~/components/Layout';
 
 import '~/styles/global.css';
@@ -26,7 +27,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
               includeSeconds: true,
             })}
           </div>
-          <Component {...pageProps} />
+          <ErrorBoundary fallbackComponent={<div>Something went wrong!</div>}>
+            <Component {...pageProps} />
+          </ErrorBoundary>
         </>,
       )}
     </>
