@@ -15,6 +15,7 @@ export default function Index() {
     if (router.isReady) {
       console.log(JSON.stringify(router));
     }
+    router.prefetch('/posts/ssg-ssr');
   }, [router]);
 
   const idRef = useRef<HTMLInputElement>(null);
@@ -99,7 +100,8 @@ export default function Index() {
       <br />
       <button
         onClick={() =>
-          router.push('/posts/[id]', '/posts/ssg-ssr', { scroll: false })
+          // router.push('/posts/[id]', '/posts/ssg-ssr', { scroll: false })
+          router.push({ pathname: '/posts/[id]', query: { id: 'ssg-ssr' } })
         }
       >
         router.push
@@ -109,6 +111,12 @@ export default function Index() {
       <button onClick={() => router.replace('posts/ssg-ssr')}>
         router.replace
       </button>
+      <br />
+      <br />
+      <button onClick={() => router.back()}>router.back</button>
+      <br />
+      <br />
+      <button onClick={() => router.reload()}>router.reload</button>
     </>
   );
 }
