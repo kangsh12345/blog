@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 // import dynamic from 'next/dynamic';
@@ -49,6 +50,24 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 
 const components = { Button, CodeBlock };
 
+const ErrorComponent = () => {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    console.log('발생');
+    throw new Error('Error occured');
+  }
+
+  return (
+    <button
+      className="rounded px-2 bg-green-500"
+      onClick={() => setError(true)}
+    >
+      Error Fire
+    </button>
+  );
+};
+
 export default function Post({ postData }: Props) {
   const router = useRouter();
 
@@ -61,6 +80,7 @@ export default function Post({ postData }: Props) {
       <Head>
         <title>{`${postData.title} - ${siteTitle}`}</title>
       </Head>
+      <ErrorComponent />
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>

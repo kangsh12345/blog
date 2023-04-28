@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
               includeSeconds: true,
             })}
           </div>
-          <ErrorBoundary fallbackComponent={<div>Something went wrong!</div>}>
+          <ErrorBoundary fallbackComponent={<div>...</div>}>
             <Component {...pageProps} />
           </ErrorBoundary>
         </>,

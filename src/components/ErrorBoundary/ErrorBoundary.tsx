@@ -27,7 +27,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({ error, errorInfo });
-    console.log({ error, errorInfo });
+    console.log(`componentDidCatch: ${error}, ${errorInfo} `);
   }
 
   render() {
@@ -46,5 +46,6 @@ export class ErrorBoundary extends Component<Props, State> {
         </div>
       );
     }
+    return this.props.children;
   }
 }
