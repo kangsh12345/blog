@@ -1,13 +1,22 @@
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 // import { GetServerSideProps } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 // export const getServerSideProps: GetServerSideProps<{}> = async () => {
 //   return { props: {} };
 // };
 
 export default function Index() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.isReady) {
+      console.log(JSON.stringify(router));
+    }
+  }, [router]);
+
   const idRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -86,6 +95,20 @@ export default function Index() {
       {showLink && (
         <Link href={`/posts/${idRef.current?.value}`}>Created Post</Link>
       )}
+      <br />
+      <br />
+      <button
+        onClick={() =>
+          router.push('/posts/[id]', '/posts/ssg-ssr', { scroll: false })
+        }
+      >
+        router.push
+      </button>
+      <br />
+      <br />
+      <button onClick={() => router.replace('posts/ssg-ssr')}>
+        router.replace
+      </button>
     </>
   );
 }
