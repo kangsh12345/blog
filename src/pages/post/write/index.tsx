@@ -1,8 +1,22 @@
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { FormEvent, forwardRef, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 // import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+
+interface LinkButtonProps {
+  href?: string;
+}
+
+const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
+  function Button({ href }, ref) {
+    return (
+      <a href={href} ref={ref}>
+        {href}로
+      </a>
+    );
+  },
+);
 
 // export const getServerSideProps: GetServerSideProps<{}> = async () => {
 //   return { props: {} };
@@ -108,7 +122,7 @@ export default function Index() {
       </button>
       <br />
       <br />
-      <button onClick={() => router.replace('posts/ssg-ssr')}>
+      <button onClick={() => router.replace('/posts/ssg-ssr')}>
         router.replace
       </button>
       <br />
@@ -117,6 +131,16 @@ export default function Index() {
       <br />
       <br />
       <button onClick={() => router.reload()}>router.reload</button>
+      <br />
+      <br />
+      <Link href="/posts/ssg-ssr" passHref legacyBehavior>
+        <LinkButton />
+      </Link>
+      <br />
+      <br />
+      <Link href="/posts/ssg-ssr" replace scroll={false}>
+        replace, scroll=false
+      </Link>
     </>
   );
 }
